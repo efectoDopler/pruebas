@@ -32,11 +32,10 @@ public class HiloPruebas {
             public void run() {
                 while(bucle){
                     try {
-                        Thread.sleep(15000);
+                        Thread.sleep(10000);
                         if(seguir) {
                             Log.i("Mensaje de bucle hilo", servicio.test());
-                            CargaOps cargarAux = new CargaOps(cargar);
-                            cargarAux.execute();
+                            servicio.descargarDatos(cargar);
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();

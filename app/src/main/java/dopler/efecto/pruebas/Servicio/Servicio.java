@@ -61,4 +61,9 @@ public class Servicio extends Service {
         Log.i("Mensaje servicio", "Mando msj desde el método del hilo");
         return "Estoy dentro del hilo";
     }
+
+    public void descargarDatos(CargaLista cargar){
+        CargaOps cargarAux = new CargaOps(cargar);
+        cargarAux.execute();
+    }
 }
