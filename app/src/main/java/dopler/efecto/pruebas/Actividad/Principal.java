@@ -85,7 +85,7 @@ public class Principal extends AppCompatActivity implements CargaLista {
     protected void onDestroy(){
         super.onDestroy();
         cargarArray = null;
-        Log.i("Final actividad", "Se ha finalizado la aplicacion");
+        Log.i("Final actividad", "Se ha finalizado la aplicaciooon");
     }
 
     private ServiceConnection servCon = new ServiceConnection() {

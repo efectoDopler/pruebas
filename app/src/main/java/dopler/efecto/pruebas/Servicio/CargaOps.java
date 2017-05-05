@@ -92,6 +92,9 @@ public class CargaOps extends AsyncTask <Void, Void, ArrayList<Opiniones>> {
                         opiniones.add(aux);
                     }
                 }
+
+                // Cierro la conexion
+                connection.disconnect();
             }
 
         } catch (MalformedURLException e) {
