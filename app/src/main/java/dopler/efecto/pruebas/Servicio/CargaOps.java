@@ -14,22 +14,25 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import dopler.efecto.pruebas.Interfaz.CargaLista;
 import dopler.efecto.pruebas.Modelo.Opiniones;
 
 /**
  * Created by Efecto Dopler on 05/05/2017.
- * Tarea asincrona que es llamada desde HiloPruebas y carga de internet
+ * Tarea asincrona que es llamada desde Servicio y carga de internet
  * los datos que se usarán para actualizar el listView de la actividad principal
  */
 
 public class CargaOps extends AsyncTask <Void, Void, ArrayList<Opiniones>> {
     ArrayList<Opiniones> opiniones;
-    CargaLista cargar;
+    // Interfaz que al usarse conecta con la actividad
+    CargaLista ICargaLista;
 
 
     public CargaOps(CargaLista cargar){
         opiniones = new ArrayList<Opiniones>();
-        this.cargar = cargar;
+        this.ICargaLista = cargar;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class CargaOps extends AsyncTask <Void, Void, ArrayList<Opiniones>> {
     @Override
     protected void onPostExecute(ArrayList<Opiniones> opiniones) {
         super.onPostExecute(opiniones);
-        cargar.cargarLista(opiniones);
+        ICargaLista.cargarLista(opiniones);
     }
 
     private void cargarOpiniones(){

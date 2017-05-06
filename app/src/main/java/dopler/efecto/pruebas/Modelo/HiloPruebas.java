@@ -2,25 +2,26 @@ package dopler.efecto.pruebas.Modelo;
 
 import android.util.Log;
 
-import dopler.efecto.pruebas.Servicio.CargaLista;
-import dopler.efecto.pruebas.Servicio.CargaOps;
+import dopler.efecto.pruebas.Interfaz.CargaLista;
 import dopler.efecto.pruebas.Servicio.Servicio;
 
 /**
  * Created by Efecto Dopler on 05/05/2017.
  * Hilo que se encarga de llevar en segundo plano el refresco de los datos de la vista
- * siempre que el servicio del que depende esté activo o la actividad no este detenida
+ * invocando al método del servicio encargado de ello siempre que la actividad no esté parada
  */
 
 public class HiloPruebas {
-    CargaLista cargar;
+    // Interfaz que se le debe pasar al servicio para que pueda hacer su trabajo
+    CargaLista ICargarLista;
+    private Servicio servicio = new Servicio();
 
     private boolean bucle = false;
     private boolean seguir = true;
-    private Servicio servicio = new Servicio();
+
 
     public HiloPruebas(CargaLista aux){
-        cargar = aux;
+        ICargarLista = aux;
     }
 
     public void iniciarHilo(boolean bool1, boolean bool2, Servicio s){
@@ -35,7 +36,7 @@ public class HiloPruebas {
                         Thread.sleep(10000);
                         if(seguir) {
                             Log.i("Mensaje de bucle hilo", servicio.test());
-                            servicio.descargarDatos(cargar);
+                            servicio.descargarDatos(ICargarLista);
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
